@@ -1,4 +1,14 @@
-def search(line):
+def search(line: str) -> int:
+    """
+    Extracts the first and last digit from a given line and returns their concatenation as an integer.
+
+    Args:
+        line (str): The input line.
+
+    Returns:
+        int: The concatenation of the first and last digit from the line.
+
+    """
     nums = [c for c in line if c.isdigit()]
     if len(nums) != 0:
         conc = nums[0] + nums[-1]
@@ -6,7 +16,7 @@ def search(line):
         return 0
     return int(conc)
 
-def main():
+def main() -> int:
     count = 0
     with open('input.txt', 'r') as file:    
         for line in file:
@@ -15,4 +25,4 @@ def main():
     return count
 
 if __name__ == '__main__':
-    print(main())
+    print(main()) # 55108
