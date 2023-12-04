@@ -25,16 +25,16 @@ def main() -> int:
                     group[0] = group[0][-1].split(" ")
 
                 for i in group:
-                    n = int(i[0])
+                    val = int(i[0])
                     color = i[1]
 
 
                     if color == "red":
-                        red.append(n)
+                        red.append(val)
                     elif color == "green":
-                        green.append(n)
+                        green.append(val)
                     elif color == "blue":
-                        blue.append(n)
+                        blue.append(val)
 
                     min_red = 1
                     min_green = 1
@@ -47,9 +47,9 @@ def main() -> int:
                 if len(blue) != 0:
                     min_blue = max(blue)
 
-                z = min_red * min_green * min_blue
+                current_product = min_red * min_green * min_blue
 
-            total = total + z
+            total = total + current_product
         return total
                     
 

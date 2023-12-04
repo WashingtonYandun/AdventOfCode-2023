@@ -6,18 +6,13 @@ def main() -> int:
             line = line.strip().split("|")
 
             # split the string into win and have, win[0] and have[1] from splited string "|"
-            wins = [int(c) for c in line[0].split(": ")[1].strip().split(" ") if c != ""]
-            have = [int(c) for c in line[1].strip().split(" ") if c != ""]
+            wins = set(int(c) for c in line[0].split(": ")[1].strip().split(" ") if c != "")
+            have = set(int(c) for c in line[1].strip().split(" ") if c != "")
 
-            n = 0
+            matches = len(wins & have)
 
-            for i in have:
-                if i in wins:
-                    n += 1
-
-            if n != 0:
-                total += 2**(n - 1)
-        
+            if matches != 0:
+                total += 2 ** (matches - 1)
     return total
 
         

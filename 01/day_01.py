@@ -9,11 +9,12 @@ def search(line: str) -> int:
         int: The concatenation of the first and last digit from the line.
 
     """
-    nums = [c for c in line if c.isdigit()]
+    nums = [char for char in line if char.isdigit()]
     if len(nums) != 0:
         conc = nums[0] + nums[-1]
     else:
         return 0
+    
     return int(conc)
 
 def main() -> int:

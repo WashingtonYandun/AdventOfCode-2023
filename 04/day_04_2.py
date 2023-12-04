@@ -1,32 +1,29 @@
 from collections import defaultdict
 
 
-def main() -> int:
-    with open('input.txt', 'r') as file: 
-        total = 0
+def main() -> tuple:
 
+    with open('input.txt', 'r') as file:
+
+        total = 0
         scratch_dict = defaultdict(int)
 
-        for l, line in enumerate(file):
+        for index, line in enumerate(file):
             
-            scratch_dict[l] += 1
+            scratch_dict[index] += 1
 
             line = line.strip().split("|")
 
             wins = set(int(c) for c in line[0].split(": ")[1].strip().split(" ") if c != "")
             have = set(int(c) for c in line[1].strip().split(" ") if c != "")
 
-            n = 0
+            matches = len(wins & have)
 
-            for num in have:
-                if num in wins:
-                    n += 1
+            if matches != 0:
+                total += 2 ** (matches - 1)
 
-            if n != 0:
-                total += 2**(n - 1)
-
-            for t in range(n):
-                scratch_dict[l + t + 1] += scratch_dict[l]
+            for times in range(1, matches + 1, 1):
+                scratch_dict[index + times] += scratch_dict[index]
         
     return total, sum(scratch_dict.values())
 
