@@ -5,6 +5,7 @@ def main() -> int:
         for line in file:
             line = line.strip().split("|")
 
+            # split the string into win and have, win[0] and have[1] from splited string "|"
             wins = [int(c) for c in line[0].split(": ")[1].strip().split(" ") if c != ""]
             have = [int(c) for c in line[1].strip().split(" ") if c != ""]
 
@@ -23,4 +24,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    print(main())
+    print(main()) # 18619
